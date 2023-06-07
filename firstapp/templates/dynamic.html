@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang='en'>
+    <head>
+        <meta charset="UTF-8">
+        <title>Динамическая страница</title>
+    </head>
+    <body>
+
+        <h1 style = "color:red; font-size : 44px; text-align: center;"> Вы на динамической странице Django! </h1>
+        
+        <form method="POST">
+            <!-- Защита от хакинг атак -->
+            {% csrf_token %}
+            <!-- Таблица с формой -->
+            <table class="form-table">
+                {{ form.as_table }}
+            </table>
+            <!-- Кнопка отправить -->
+            <input class="form-submit-button" type="submit" value="Отправить">
+        </form>
+        
+        <style>
+            .form-table {
+                font-size: 20px;
+                border-collapse: collapse;
+            }
+        
+            .form-table th,
+            .form-table td {
+                padding: 8px;
+                border: 1px solid #ccc;
+            }
+        
+            .form-table th {
+                background-color: #f2f2f2;
+            }
+        
+            .form-table input[type="text"],
+            .form-table input[type="number"] {
+                padding: 4px;
+                border: 1px solid #ccc;
+            }
+        
+            .form-submit-button {
+                display: inline-block;
+                padding: 8px 16px;
+                background-color: #f2f2f2;
+                color: #333;
+                border: none;
+                border-radius: 4px;
+                font-size: 20px;
+                margin-top: 10px;
+                cursor: pointer;
+            }
+        
+            .form-submit-button:hover {
+                background-color: #ddd;
+            }
+        </style>
+        
+    </body>
+</html>

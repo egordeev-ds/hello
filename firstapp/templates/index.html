@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang='en'>
+    <head>
+        <meta charset="UTF-8">
+        <title>Главная страница</title>
+    </head>
+    <body>
+        <h1 style = "color:red; font-size : 44px; text-align: center;"> Вы на Главной странице Django! </h1>
+
+        <a class="retro-link" href="{% url 'static' %}">Static Page</a> <br>
+        <a class="retro-link" href="{% url 'dynamic' %}">Dynamic Page</a> <br>
+        <a class="retro-link" href="{% url 'show_people' %}">Show people</a>
+
+        <style>
+            .retro-link {
+                font-size: 30px;
+                color: black;
+                text-decoration: none;
+                text-transform: uppercase;
+                display: block;
+                margin-bottom: 10px;
+                font-family: "Courier New", monospace;
+            }
+        </style>
+
+    </body>
+</html>

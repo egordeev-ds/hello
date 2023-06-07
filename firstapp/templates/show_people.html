@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang='en'>
+    <head>
+        <meta charset="UTF-8">
+        <title>Динамическая страница</title>
+    </head>
+    <body>
+
+        <h1 style = "color:red; font-size : 44px; text-align: center;"> Вы на динамической странице Django! </h1>
+
+        <!-- Создание человека -->
+        <h2>Форма ввода</h2>
+        <form method="POST" action="create/" class="person-form">
+            <!-- Защита от хакинг аттак -->
+            {% csrf_token %}
+            <p>
+                <label> Введите имя </label>
+                <input type="text" name = "name"  class="form-input">
+            </p>
+            <p>
+                <label> Введите возраст </label>
+                <input type="number" name = "age"  class="form-input">
+            </p>
+            <input type="submit" value="Сохранить"  class="form-submit">
+        </form>
+
+        <style>
+            .person-form {
+                margin-bottom: 20px;
+                width: 40%;
+                border: 1px solid #ccc;
+                padding: 20px;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+        
+            .form-label {
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+        
+            .form-input {
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                width: 100%;
+                box-sizing: border-box;
+                font-size: 16px;
+            }
+        
+            .form-submit {
+                padding: 12px 24px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+                text-transform: uppercase;
+            }
+        
+            .form-submit:hover {
+                background-color: #0056b3;
+            }
+        </style>
+        
+
+        <!-- Вывод людей -->
+        {% if people.count > 0 %}
+        <h2>Список пользователей</h2>
+        <table class="person-table">
+            <tr><th>Id</th><th>Имя</th><th>Возраст</th><th>Option</th></tr>
+            {% for person in people  %}
+            <tr>
+                <td>{{person.id}}</td>
+                <td>{{person.name}}</td>
+                <td>{{person.age}}</td>
+                <td>
+                    <a href="edit/{{person.id}}" class="action-button">Изменить</a>
+                    <a href="delete/{{person.id}}" class="action-button">Удалить</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+
+<style>
+    .person-table {
+        width: 40%; /* 1.5 times smaller width */
+        height: 20%; /* 1.5 times smaller height */
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+
+    .person-table th,
+    .person-table td {
+        padding: 8px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .person-table th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    .person-table a {
+        display: inline-block;
+        padding: 6px 12px;
+        background-color: #f2f2f2;
+        color: #333;
+        text-decoration: none;
+        border-radius: 4px;
+        margin-right: 8px;
+    }
+
+    .person-table a:hover {
+        background-color: #ddd;
+    }
+</style>
+        
+
+    </body>
+</html>

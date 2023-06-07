@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang='en'>
+    <head>
+        <!-- кодировка -->
+        <meta charset="UTF-8">
+        <!-- заголовок станицы -->
+        <title>Привет Django</title>
+
+        <!-- внутренний стиль -->
+        <style>h2{color: green;}h2{color: green;}</style>   
+        <style>img{margin-left: 30px;}</style>   
+    </head>
+    <body>
+        <!-- встроенный стиль -->
+        <h1 style = "color:red; font-size : 44px; text-align: center;"> Вы на статической странице Django! </h1>
+        <h2 style = "color:blue; font-size : 34px"> templates/index.html</h2>
+        <img style ="width: 30%;" src="{% static 'images/image_1.jpeg' %}">
+        <img style ="width: 30%; text-align: center;" src="{% static 'images/image_1.jpeg' %}">
+        <img style ="width: 30%; text-align: right;" src="{% static 'images/image_1.jpeg' %}">
+
+        <!-- Вывод системного времени -->
+        <p>Дата - {% now "Y.m.d" %} </p>
+
+        <!-- Вывод в зависимости от условия -->
+        {% if age > 65 %}
+            <p style = "text-align: right; position: absolute; top: 12%; right: 5%; font-size: 25px;">Клиент достиг пенсионного возраста</p>
+        {% else %}
+            <p style = "text-align: right; position: absolute; top: 12%; right: 5%; font-size: 25px">Клиент не достиг пенсионного возраста</p>
+        {% endif %}
+
+        <!-- Вывод циклом -->
+        {% for i in cat  %}
+            <li style = "text-align: right; font-size: 25px; margin-right: 50px;">{{i}}</li>
+        {% endfor %}
+
+    </body>
+</html>

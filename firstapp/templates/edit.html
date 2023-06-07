@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang='en'>
+    <head>
+        <meta charset="UTF-8">
+        <title>Динамическая страница</title>
+    </head>
+    <body class="container">
+
+        <!-- Редактирование человека -->
+        <form method="POST">
+            <!-- Защита от хакинг аттак -->
+            {% csrf_token %}
+            <p>
+                <label> Введите имя </label>
+                <input type="text" name = "name" value = "{person.name}"/>
+            </p>
+            <p>
+                <label> Введите возраст </label> <br>
+                <input type="number" name = "age" value = "{person.age}"/>
+            </p>
+            <input type="submit" value="Сохранить">
+        </form>
+
+    </body>
+</html>
